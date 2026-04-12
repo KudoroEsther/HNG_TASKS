@@ -22,7 +22,7 @@ The API is built with **FastAPI** and includes:
 Install the required dependencies:
 
 ```bash
-pip install fastapi uvicorn httpx
+pip install -r requirements.txt
 ```
 
 ---
