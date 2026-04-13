@@ -53,12 +53,12 @@ async def classify_name(name: Optional[Any] = Query(default=None)):
         async with httpx.AsyncClient(timeout=3.0) as client:
             response = await client.get(GENDERIZE_URL, params={"name": cleaned_name})
             response.raise_for_status()
-            payload = response.json()
+            payload = response.json() # converts the raw text response from the API into payload (a useable python dictionary)
 
     except httpx.HTTPStatusError:
         return error_response("Failed to get a valid response from Genderize API", 502)
     except httpx.RequestError:
-        return error_response("Unable to reach Genderize API", 502)
+        return error_response("Unable to reach Genderize API", 502)()
     except Exception:
         return error_response("Internal server error", 500)
 
