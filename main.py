@@ -8,14 +8,16 @@ from fastapi.responses import JSONResponse
 
 app = FastAPI()
 
+# Allows select origin, crea to communicate with the backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=False,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=["*"], # allows all origins
+    allow_credentials=False, # Indicates that cookies should be supported for cross origin requests, the default is False
+    allow_methods=["*"], # this allows all http methods to communicate or perform cross origin requests
+    allow_headers=["*"], # allows all http request headers to communicate
 )
 
+# stores the base url of the exteranl API
 GENDERIZE_URL = "https://api.genderize.io"
 
 # To customize each error message
