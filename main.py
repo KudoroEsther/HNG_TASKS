@@ -17,14 +17,15 @@ app.add_middleware(
     allow_headers=["*"], # allows all http request headers to communicate
 )
 
-# stores the base url of the exteranl API
+# stores the base url of the exteranl API. Genderize API predict gender based on a name
 GENDERIZE_URL = "https://api.genderize.io"
 
 # To customize each error message
 def error_response(message: str, status_code: int) -> JSONResponse:
     return JSONResponse(
         status_code=status_code,
-        content={"status": "error", "message": message},
+        content={"status": "error",
+                  "message": message},
     )
 
 
